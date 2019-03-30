@@ -16,7 +16,7 @@
 <body>
     <!-- Conteúdo -->
     
-	<form action = "../HTML/php/conexao.php" method="POST">
+	<form action = "../php/conexao.php" method="POST">
         <h2>Login</h2>
         <input type ="text" placeholder="Usuário" name="usuario">
         <input type ="password" placeholder="Senha" name="senha">
