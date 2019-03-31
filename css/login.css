@@ -8,7 +8,6 @@ body{
     background: #1e262c;
     display: flex;
     min-height: 100vh;
-
 }
 
 form{
@@ -43,4 +42,9 @@ input{
     color: white;
     cursor: pointer;
 }
+
+.links{
+    text-align: center;
+}
+
 
