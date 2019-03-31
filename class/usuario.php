@@ -25,10 +25,10 @@ class Usuario {
         WHERE usuario = :u");
         $sql->bindValue(":u", $usuario);
         $sql->execute();
-        if($sql->rowCount() > 0){
+        if($sql->rowCount() > 0){//conta as linhas
             return false; //ja esta cadastrado no banco
         } else{ //cadastrando no banco
-            $sql = $conn->prepare("INSERT INTO usuarios ($usuario, $email, $senha) 
+            $sql = $conn->prepare("INSERT INTO usuarios (usuario, email, senha) 
             VALUES (:u, :e, :s)");
           $sql->bindValue(":u", $usuario);
           $sql->bindValue(":e", $email);
