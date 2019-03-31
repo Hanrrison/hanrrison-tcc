@@ -51,15 +51,15 @@ if(isset($_POST['usuario'])){
             if($senha == $confirmarsenha)
             {
                 if($u->cadastro_usuario($usuario, $email, $senha))
-                {
-                    echo "Cadastrado com sucesso";
+                {   
+                    echo "<script>alert('Usuario cadastrado com sucesso!');</script>";
                 } else{
-                    echo "Usuário já cadastrado";
+                    echo "<script>alert('Usuario já cadastrado!');</script>";
                 }
             } 
             else
             {
-                echo "Senha e confirmar senha não estão corretos";
+                echo "<script>alert('Senha e confirmar senha não conferem!');</script>";
             }
         } 
         else
@@ -67,7 +67,7 @@ if(isset($_POST['usuario'])){
             echo "Erro: ".$u->msgErro;
         } 
     } else{
-        echo "Por favor, preencha todos os dados";
+        echo "<script>alert('Por favor, preencha todos os dados!');</script>";
     }
 }
 
