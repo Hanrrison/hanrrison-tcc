@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <?php
 require_once 'class/usuario.php';
