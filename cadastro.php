@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-requice_once 'php/conexao.php';
 require_once 'class/usuario.php';
 $u = new Usuario;
 ?>
