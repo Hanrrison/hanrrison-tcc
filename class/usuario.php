@@ -8,7 +8,7 @@ class Usuario {
     public function conectar($db, $host, $user, $password){
 
         global $conn;
-        
+
         try {
             $conn = new PDO("mysql:host=$host; dbname=$db", $user, $password);
             return array("conexao" => $conn, "mensagem" => "Conectado no banco com sucesso");
