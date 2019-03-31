@@ -23,7 +23,7 @@ $u = new Usuario;
 <body>
 	<!-- Conteúdo -->
 
-	<form action = "cadastro.php" method="POST">
+	<form method="POST">
         <h2>Cadastro</h2>
         <input type ="text" placeholder="Usuário" name="usuario" maxlength="40">
         <input type ="text" placeholder="E-mail" name="email" maxlength="40">
