@@ -3,7 +3,9 @@
 <?php
 require_once 'php/conexao.php';
 require_once 'class/usuario.php';
+
 $u = new Usuario;
+
 ?>
 
 <html>
@@ -13,7 +15,7 @@ $u = new Usuario;
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
 
 	<title>Cadastro</title>
 
