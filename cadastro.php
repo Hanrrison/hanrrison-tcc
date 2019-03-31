@@ -39,10 +39,12 @@ if(isset($_POST['usuario'])){
     $senha = addslashes($_POST['senha']);
     $confirmarsenha = addslashes($_POST['confirmarsenha']);
     //verificar se esta preenchido
-    if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha)){
+    if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha))
+    {
         $u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");
-        if($u->msgErro == ""){ //se esta ok
+        if($u->msgErro == "")
+        { //se esta ok
             if($senha == $confirmarsenha)
             {
                 if($u->cadastro_usuario($usuario, $email, $senha))
@@ -51,10 +53,16 @@ if(isset($_POST['usuario'])){
                 } else{
                     echo "Usuário já cadastrado";
                 }
-            } else{
-                echo "Senhas não estão corretas";
+            } 
+            else
+            {
+                echo "Senha e confirmar senha não estão corretos";
             }
-        }
+        } 
+        else
+        {
+            echo "Erro: ".$u->msgErro;
+        } 
     } else{
         echo "Por favor, preencha todos os dados";
     }
