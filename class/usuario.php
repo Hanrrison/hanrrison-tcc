@@ -23,17 +23,17 @@ class Usuario {
         //verificar se o nome ja tem cadastro
         //se nao cadastrar
         $sql = $conn->prepare("SELECT id_usuario FROM usuarios
-        WHERE usuario = :u");
-        $sql->bindValue(":u", $usuario);
+        WHERE usuario = :usuario");
+        $sql->bindValue(":usuario", $usuario);
         $sql->execute();
         if($sql->rowCount() > 0){//conta as linhas
             return false; //ja esta cadastrado no banco
         } else{ //cadastrando no banco
             $sql = $conn->prepare("INSERT INTO usuarios (usuario, email, senha) 
-            VALUES (:u, :e, :s)");
-          $sql->bindValue(":u", $usuario);
-          $sql->bindValue(":e", $email);
-          $sql->bindValue(":s", md5($senha));
+            VALUES (:usuario, :email, :senha)");
+          $sql->bindValue(":usuario", $usuario);
+          $sql->bindValue(":email", $email);
+          $sql->bindValue(":senha", md5($senha));
           return true; //cadastrado com sucesso         
         }
 
@@ -44,9 +44,9 @@ class Usuario {
         //verificar se o usuario ja esta cadastrado, caso sim
 
         $sql = $conn->prepare("SELECT id_usuario FROM usuarios
-        WHERE usuario = :u AND senha = :s");
-        $sql->bindValue(":u", $usuario);
-        $sql->bindValue(":s", md5($senha));
+        WHERE usuario = :usuario AND senha = :senha");
+        $sql->bindValue(":usuario", $usuario);
+        $sql->bindValue(":senha", md5($senha));
         $sql->execute();
         if($sql->rowCount() > 0){
             //entrando no sistema
