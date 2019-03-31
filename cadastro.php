@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-require_once 'php/conexao.php';
-require_once 'class/usuario.php';
+include 'php/conexao.php';
+include 'class/usuario.php';
 $u = new Usuario;
 ?>
 
