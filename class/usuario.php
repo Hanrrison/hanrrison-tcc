@@ -31,11 +31,9 @@ class Usuario {
         } else{ //cadastrando no banco
             $sql = $conn->prepare("INSERT INTO usuarios (usuario, email, senha) 
             VALUES (:usuario, :email, :senha)");
-          
           $sql->bindValue(":usuario", $usuario);
           $sql->bindValue(":email", $email);
           $sql->bindValue(":senha", md5($senha));
-            $sql->execute();
           return true; //cadastrado com sucesso         
         }
 
