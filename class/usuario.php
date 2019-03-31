@@ -34,7 +34,9 @@ class Usuario {
           $sql->bindValue(":usuario", $usuario);
           $sql->bindValue(":email", $email);
           $sql->bindValue(":senha", md5($senha));
-          return true; //cadastrado com sucesso         
+                  $sql->execute();
+
+            //return true; //cadastrado com sucesso         
         }
 
     }
