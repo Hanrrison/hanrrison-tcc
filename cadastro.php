@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 require_once 'php/conexao.php';
+getConnection();
 require_once 'class/usuario.php';
 $u = new Usuario;
 ?>
