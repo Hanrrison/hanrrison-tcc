@@ -23,7 +23,7 @@ $u = new Usuario;
 <body>
     <!-- Conteúdo -->
     
-	<form action = "home.php" method="POST">
+	<form method="POST">
         <h2>Login</h2>
         <input type ="text" placeholder="Usuário" name="usuario">
         <input type ="password" placeholder="Senha" name="senha">
@@ -49,7 +49,7 @@ if(isset($_POST['usuario'])){
             {
                 if($u->login($usuario, $senha))
                 {
-                    header("location: home.php");
+                    header ("location: home.php");
                 } 
                 else
                 {
@@ -67,7 +67,7 @@ if(isset($_POST['usuario'])){
     }
 }
 
- ?>   
+?>   
 
 </body>
 
