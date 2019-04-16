@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-
 <?php
-	session_start();
-	if(!isset($_SESSION['id_usuario'])){
-			header("location: login.php");
-			exit;
-	}
-//sair do php
 //session_start();
-	//unset($_SESSION['id_usuario']);
-		//	header("location: login.php");
+	//if(!isset($_SESSION['id_usuario'])){//se nao esta logado, volta pra tela login
+		//header("location: login.php");
+		//exit;
 	//}
 ?>
+
+<!DOCTYPE html>
 
 <html>
 
@@ -41,8 +36,8 @@
 
 	<nav id="menu">
 		<ul>
-			<li><a href="../html/home.html">Dashboard</a></li>
-			<li><a href="../html/transacoes.html">Transações</a></li>
+			<li><a href="home.php">Dashboard</a></li>
+			<li><a href="transacoes.php">Transações</a></li>
 			<li><a href="#">Cadastro</a>
 
 				<ul>

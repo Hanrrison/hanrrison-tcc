@@ -4,11 +4,11 @@ function adicionar_conta(){
 }
 
 function detalhesrenda(){
-    window.open('detalhes.com.br','_self');
+    window.open('transacoes.php','_self');
 }
 
 function detalhesdespesas(){
-    window.open('detalhes.com.br','_self');
+    window.open('transacoes.php','_self');
 }
 
 function logout(){

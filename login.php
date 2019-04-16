@@ -30,9 +30,10 @@ $u = new Usuario;
         <input type ="submit" class="login" value="Entrar">
 
         <div class="links">
-        <a href="#">Esqueceu a senha?</a><br>
-        <a href="#">Não tem uma conta? Cadastre-se</a>
+             <a href="#">Esqueceu a senha?</a><br>
+             <a href="cadastro.php">Não tem uma conta? Cadastre-se</a>
         </div>
+        
     </form>
 
 <?php
@@ -45,11 +46,13 @@ if(isset($_POST['usuario'])){
         {
             $u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
             "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");
+
             if($u->msgErro == "")
             {
                 if($u->login($usuario, $senha))
                 {
-                    header ("location: home.php");
+                    //header("location: home.php");
+                    //echo "<script type='text/javascript'>window.location = 'home.php'</script>";
                 } 
                 else
                 {

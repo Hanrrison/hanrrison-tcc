@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<?php
+	require_once 'php/conexao.php';
+?>
+
+
 <html>
 
 <head>
@@ -7,6 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="../css/transacoes.css">
+
 
 	<title>Bem vindo a home</title>
 
@@ -65,7 +72,7 @@
 						<h2 class="titlerendas">Receitas</h2>
 						
 						<div class="receitas">
-							<form>
+							<form method="POST">
 
 									<input type="text" size="10" placeholder="R$: 0.00">
 									<input type="text" placeholder="DD/MM/YYYY"><br>
@@ -143,17 +150,38 @@
 						<h2 class="titledespesas">Despesas</h2>
 
 						<div class="despesas">
-								<form>
+								<form method="POST" enctype="multipart/form-data">
 										
 										<label for='import-arquivo'>Importar XML</label>
-										<input id='import-arquivo' type='file' accept=".xml">
-				
+										<input id='import-arquivo' type='file' accept=".xml" name="doc">
+											<?php
+
+												require_once 'entradaxml.php';
+												
+												$importaxml = new importaxml;
+												get_class($importaxml);
+												
+												$variavel = $importaxml->entradaxml();
+												
+											$teste = $variavel[0];
+											$teste2 = $teste[0];
+										//	echo $teste2 . "<br>";
+ 
+											$dh = $variavel[1];
+											$dh2 = $dh[0];
+											//echo $dh2;
+
+											//echo "<script>alert('Arquivo importado!');</script>"
+
+											?>
+
 										<label for='submit-arquivo'>Confirmar XML</label>
 										<input type="submit" id="submit-arquivo" value="Confirmar Importação"><br>		
 										
 									
-									<input type="text" size="10" placeholder="R$: 0.00">
-									<input type="text" placeholder="DD/MM/YYYY"><br>
+									<input type="text" size="10" placeholder="R$: 0.00" value="<?php echo $teste2;?>">
+									<input type="text" placeholder="DD/MM/YYYY" value="<?php echo date('d/m/Y', strtotime($dh2)); ?>"><br>
+
 									<input type="text" placeholder="Nome">
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>

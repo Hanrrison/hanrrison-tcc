@@ -3,7 +3,6 @@
 <?php
 require_once 'php/conexao.php';
 require_once 'class/usuario.php';
-
 $u = new Usuario;
 
 ?>
@@ -14,7 +13,6 @@ $u = new Usuario;
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="../css/cadastro.css">
 
 	<title>Cadastro</title>
@@ -25,14 +23,14 @@ $u = new Usuario;
 <body>
 	<!-- Conteúdo -->
 
-	<form action = "cadastro.php" method="POST">
+	<form action = "login.php" method="POST">
         <h2>Cadastro</h2>
         <input type ="text" placeholder="Usuário" name="usuario" maxlength="40">
-        <input type ="text" placeholder="E-mail" name="email" maxlength="40">
+        <input type ="text" placeholder="E-mail" name="email" maxlength="40"> <!-- Incluir type email -->
         <input type ="password" placeholder="Senha" name="senha" maxlength="32">
         <input type ="password" placeholder="Confirmar Senha" name="confirmarsenha" maxlength="32">
         <input type ="submit" class="registrar" value="Registrar">
-        <div class="links"><a href="#">Já tem um cadastro? Clique aqui para entrar</a></div>
+        <div class="links"><a href="login.php">Já tem um cadastro? Clique aqui para entrar</a></div>
     </form>
 <?php
 //verificar se clicou no botao

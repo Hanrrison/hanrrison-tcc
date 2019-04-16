@@ -57,8 +57,7 @@ class Usuario {
         } else{
             return false; //nao foi possivel logar
         }
-
-
+        
     }
     
 }
