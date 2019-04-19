@@ -7,10 +7,11 @@ class importaxml
     public function entradaxml()
     {
 
-        if (!isset($_FILES['doc']) || ($_FILES['doc']['error'] != UPLOAD_ERR_OK)) {
+        if (!isset($_FILES['impxml']) || ($_FILES['impxml']['error'] != UPLOAD_ERR_OK)) {
             //o campo fica em branco
+
         } else {
-            $xml = simplexml_load_file($_FILES['doc']['tmp_name']);
+            $xml = simplexml_load_file($_FILES['impxml']['tmp_name']);
 
             foreach ($xml->NFe as $NFe) {
                 foreach ($xml->NFe->infNFe as $infNFe) {
@@ -37,7 +38,6 @@ class importaxml
 
         $dadosarray = array($vNF, $dhEmi);
         return $dadosarray;
-
     }
 
 }

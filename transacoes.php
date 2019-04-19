@@ -75,9 +75,9 @@
 						<div class="receitas">
 							<form method="POST">
 
-									<input type="text" size="10" placeholder="R$: 0.00">
-									<input type="text" placeholder="DD/MM/YYYY"><br>
-									<input type="text" placeholder="Nome">
+									<input type="text" size="10" name="valorreceita" placeholder="R$: 0.00">
+									<input type="text" name="datareceita" placeholder="DD/MM/YYYY" value="<?php echo date("d/m/Y");?>"><br>
+									<input type="text" name="nomereceita" placeholder="Nome">
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>
 										</select>
@@ -88,8 +88,28 @@
 										<div class="submitreceitas">
 											<input type ="submit" class="btnreceita" value="Confirmar Receita">
 										</div>
-
 							</form>
+							<?php
+								if(isset($_POST['valorreceita']) && isset($_POST['datareceita']) && isset($_POST['nomereceita'])){
+									$valorreceita = addslashes($_POST['valorreceita']);
+									$datareceita = addslashes($_POST['datareceita']);
+									$nomereceita = addslashes($_POST['nomereceita']);
+
+									if(!empty($valorreceita) && !empty($datareceita) && !empty($nomereceita)){
+										echo $valorreceita;
+										echo "testando";
+										echo $datareceita;
+										echo "dtreceita";
+										echo $nomereceita;
+										echo "nomedespesa";
+
+									}
+
+
+								}
+
+							?>
+
 						</div>
 
 				
@@ -154,30 +174,32 @@
 								<form method="POST" enctype="multipart/form-data">
 										
 										<label for="import-arquivo">Importar XML</label>
-										<input id="import-arquivo" type='file' name="doc" accept=".xml" >
+										<input id="import-arquivo" type='file' name="impxml" accept=".xml" >
 											<?php
 
 												require_once 'class/importaxml.php';
 												
 												$importaxml = new importaxml;
-												get_class($importaxml);
+												$importacao = $importaxml->entradaxml();
 												
-												$variavel = $importaxml->entradaxml();
+												$teste = $importacao[0];
+												$valordanfe = $teste[0]; //valor
+
+												$dh = $importacao[1];
+												$datadanfe = $dh[0]; //data
+
+
+												$dataconvertida = $datadanfe; //variavel dataconvertida para formatar a string em date
+												$date = new DateTime($dataconvertida);
 												
-											$teste = $variavel[0];
-											$teste2 = $teste[0]; //valor
-
-											$dh = $variavel[1];
-											$dh2 = $dh[0]; //data
-
 											?>
 
 										<label for="submit-arquivo">Confirmar XML</label>
 										<input type="submit" id="submit-arquivo" name="confirmaxml" value="Confirmar Importação"><br>		
 										
 									
-									<input type="text" size="10" name="valordespesa" placeholder="R$: 0.00" value="<?php echo $teste2;?>">
-									<input type="text" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo date('d/m/Y', strtotime($dh2));?>"><br>
+									<input type="text" size="10" name="valordespesa" placeholder="R$: 0.00" value="<?php echo $valordanfe;?>">
+									<input type="text" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo $date->format('d/m/Y');?>"><br>
 
 									<input type="text" name="nomedespesa" placeholder="Nome">
 									<select name="classificacao">
@@ -200,12 +222,14 @@
 										$nomedespesa = addslashes($_POST['nomedespesa']);
 
 										if(!empty($valordespesa) && !empty($datadespesa) && !empty($nomedespesa)){
-											echo $valordespesa;
-											echo "testando";
-											echo $datadespesa;
-											echo "datadespesa";
-											echo $nomedespesa;
-											echo "nomedespesa";
+											// echo $valordespesa;
+											// echo "testando";
+											// echo $datadespesa;
+											// echo "datadespesa";
+											// echo $nomedespesa;
+											// echo "nomedespesa"; 
+
+											//conecta no banco de dados
 
 										}
 

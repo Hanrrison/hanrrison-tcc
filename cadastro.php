@@ -23,7 +23,7 @@ $u = new Usuario;
 <body>
 	<!-- Conteúdo -->
 
-	<form action = "login.php" method="POST">
+	<form method="POST">
         <h2>Cadastro</h2>
         <input type ="text" placeholder="Usuário" name="usuario" maxlength="40">
         <input type ="text" placeholder="E-mail" name="email" maxlength="40"> <!-- Incluir type email -->
@@ -42,8 +42,9 @@ if(isset($_POST['usuario'])){
     //verificar se esta preenchido
     if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha)) //se nao esta vazio
     {
-        $u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");
+       $u->conectar();
+       
+
         if($u->msgErro == "")
         { //se esta ok
             if($senha == $confirmarsenha)
