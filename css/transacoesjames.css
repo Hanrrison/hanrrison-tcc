@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans|Lalezar|Roboto|Ubuntu');
+*{
+    margin: 0px;
+    padding: 0px;
+ }
+
+
+body{
+    background-color:#edf1f2;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+a{
+    color: white;
+}
+
+
+.pagetitle{
+    padding-bottom: 2px;
+    width: 95%;
+    border-bottom: 0.5px solid black;
+    font-family: 'Fira Sans', sans-serif;
+    color: #686868;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+#main{
+    margin-left: 150px; /* margem em relacao ao menu */
+    padding-top: 80px;
+}
+
+#menu{
+    width: 150px;
+    float: left;
+    margin-top: 55px;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    width: 150px; 
+    background-image: linear-gradient(to bottom, #1e3c72, #234a85, #265998, #2969ac, #2a79c0);    position: fixed;
+    height: 100%;
+    overflow: auto;
+    
+}
+
+#menu ul li {
+   margin-top: 5px;
+    
+}
+
+#menu ul li a {
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #005290;
+    text-align: left;
+    font-size: 15px;
+}
+
+#menu ul li a:hover {
+    transition: all 1s ease;
+    background-color: #247dbf;
+    color: #edf1f2;
+    border: 1px solid #edf1f2;
+    
+}
+
+#menu li ul{ /*deixa o submenu invisivel*/
+    
+    display: none;
+
+}
+
+#menu li:hover ul{ /*deixa o submenu aparente*/
+    
+    display: block;
+    position: relative;
+    
+}
+
+
+
+.header{
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    background-image: linear-gradient(to right, #1e3c72, #234a85, #265998, #2969ac, #2a79c0);
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.login{
+    float: right;
+    margin: 7px;
+    padding: 0px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+#logo{
+    position: absolute;
+    left: 25px;
+}
+
+.info{
+    width: 95%; /*da pra usar 96, estava 93*/
+    height: 100%;
+    border: 0px solid black;
+    border-spacing: 10px;
+    margin: 5px;
+}
+
+
+.infocards{
+    width: 95%;
+	margin: 30px;
+   /* border: 1px solid black;*/
+    
+}
+
+.infocardswrap{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.cards{
+    width: 100%;
+    flex: 1;
+}
+
+.item {
+	margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+	background: white;
+    text-align: right;
+    font-size: 20px;
+    height: 150px;
+}
+
+.btnadd{
+    width: 80px;
+    height: 50px;
+    background-color: green;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+}
+
+.btnremove{
+    width: 80px;
+    height: 50px;
+    background-color: red;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;   
+}
+.box {
+  /* border: 2px solid black;*/
+    border-radius: 20px;
+    margin: 1rem;
+    width: 250px;
+    /* O flex: 1; é necessário para que cada item se expanda
+     ocupando o tamanho máximo do container. */
+    flex: 1;
+
+}
+
+.box2{
+   /* border: 2px solid black;*/
+    border-radius: 20px;
+    margin: 1rem;
+    width: 250px;
+    flex: 1;
+
+}
+
+
+.box3{
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: cadetblue;
+}
+
+.boxrendas{
+    /*background: rgb(0, 119, 255);*/
+    border: 1px solid rgb(26, 87, 158);
+    border-radius: 5px;
+}
+
+.boxdespesas{
+    /*background: rgb(255, 76, 76);*/
+    border: 1px solid rgb(221, 61, 61);
+    border-radius: 5px;
+}
+
+.button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin: 2px;
+    cursor: pointer;
+    float: right;
+
+}
+
+.button1 {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin: 2px;
+    cursor: pointer;
+    float: right;
+
+}
+
+.button2 {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin: 2px;
+    cursor: pointer;
+    float: right;
+
+}
+
+
+
+.rodape{
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    /*background: rgb(244, 248, 7);*/
+}
+
+.pagetitle{
+    margin-left: 30px;
+}
+
+
+.tablerendas {
+    border-collapse: collapse;
+    /*border: solid;*/
+    width: 97.5%;
+    margin: 10px;
+}
+
+.tabledespesas {
+    border-collapse: collapse;
+   /* border: solid;*/
+    width: 97.5%;
+    margin: 10px;
+}
+  
+th {
+    border-bottom: 1px solid black;
+    background-color: #abafaf;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    border-bottom: 1px solid;
+    text-align: left;
+    padding: 8px;
+}
+
+
+
+
+.titlerendas{
+    padding: 5px;
+    background-color: rgb(39, 102, 174);
+    border-bottom: 0px solid rgb(0, 119, 255);
+    font-family: 'Fira Sans', sans-serif;
+    color: #FFFFFF;
+}
+
+.titledespesas{
+    padding: 5px;
+    background-color: rgb(237, 77, 77);
+    border-bottom: 0px solid rgb(170, 30, 30);
+    font-family: 'Fira Sans', sans-serif;
+    color: #FFFFFF;
+}
+
+.btnrendas{
+    width: 80px;
+    height: 25px;
+    background-color: rgb(42, 116, 200);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+    float: right;
+}
+
+.btndespesas{
+    width: 80px;
+    height: 25px;
+    background-color: rgb(255, 76, 76);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+    float: right;
+}
+
+.receitas, .despesas{
+    width: auto;
+    margin: 10px;
+    border: 0px solid black;
+}
+
+.submitreceitas, .submitdespesas{
+    width: auto;
+    height: 50px;
+    margin: 10px;
+}
+
+.btnreceita{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(29, 101, 185);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btndespesa{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(231, 72, 72);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+input[type="text"], select{
+   /* border: 1px solid black;
+    border-radius: 3px;
+    height: 20px;
+    margin: 2px;*/
+    border: 1px;
+    border-radius: 5px;
+    display: inline-flex;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+/* Esconde o input */
+
+input[type='file']{
+    display: none
+  }
+ 
+#submit-arquivo{
+    display: none;
+}
+
+
+  /* Aparência que terá o seletor de arquivo */
+  label {
+    background-color: rgb(255, 76, 76);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px;
+    flex: 1;
+    display: inline-flex;
+  }
+
+
+
+
+form{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    flex: 1;
+}

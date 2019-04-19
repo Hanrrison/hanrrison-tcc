@@ -4,7 +4,7 @@ class Usuario {
     
     private $conn;
     public $msgErro = "";
-    
+
     public function conectar($db, $host, $user, $password){
 
         global $conn;
@@ -17,6 +17,7 @@ class Usuario {
         }
 
     }
+
 
     public function cadastro_usuario($usuario, $email, $senha){
         global $conn;

@@ -13,6 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="../css/transacoes.css">
+	
 
 
 	<title>Bem vindo a home</title>
@@ -152,11 +153,11 @@
 						<div class="despesas">
 								<form method="POST" enctype="multipart/form-data">
 										
-										<label for='import-arquivo'>Importar XML</label>
-										<input id='import-arquivo' type='file' accept=".xml" name="doc">
+										<label for="import-arquivo">Importar XML</label>
+										<input id="import-arquivo" type='file' name="doc" accept=".xml" >
 											<?php
 
-												require_once 'entradaxml.php';
+												require_once 'class/importaxml.php';
 												
 												$importaxml = new importaxml;
 												get_class($importaxml);
@@ -164,25 +165,21 @@
 												$variavel = $importaxml->entradaxml();
 												
 											$teste = $variavel[0];
-											$teste2 = $teste[0];
-										//	echo $teste2 . "<br>";
- 
-											$dh = $variavel[1];
-											$dh2 = $dh[0];
-											//echo $dh2;
+											$teste2 = $teste[0]; //valor
 
-											//echo "<script>alert('Arquivo importado!');</script>"
+											$dh = $variavel[1];
+											$dh2 = $dh[0]; //data
 
 											?>
 
-										<label for='submit-arquivo'>Confirmar XML</label>
-										<input type="submit" id="submit-arquivo" value="Confirmar Importação"><br>		
+										<label for="submit-arquivo">Confirmar XML</label>
+										<input type="submit" id="submit-arquivo" name="confirmaxml" value="Confirmar Importação"><br>		
 										
 									
-									<input type="text" size="10" placeholder="R$: 0.00" value="<?php echo $teste2;?>">
-									<input type="text" placeholder="DD/MM/YYYY" value="<?php echo date('d/m/Y', strtotime($dh2)); ?>"><br>
+									<input type="text" size="10" name="valordespesa" placeholder="R$: 0.00" value="<?php echo $teste2;?>">
+									<input type="text" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo date('d/m/Y', strtotime($dh2));?>"><br>
 
-									<input type="text" placeholder="Nome">
+									<input type="text" name="nomedespesa" placeholder="Nome">
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>
 										</select>
@@ -193,9 +190,31 @@
 										<div class="submitdespesas">
 											<input type ="submit" class="btndespesa" value="Confirmar Despesa">
 										</div>
-										
-
 								</form>
+								<?php
+									//criar a conexao no banco e gravar os dados
+
+									if(isset($_POST['valordespesa']) && isset($_POST['datadespesa']) && isset($_POST['nomedespesa'])){
+										$valordespesa = addslashes($_POST['valordespesa']);
+										$datadespesa = addslashes($_POST['datadespesa']);
+										$nomedespesa = addslashes($_POST['nomedespesa']);
+
+										if(!empty($valordespesa) && !empty($datadespesa) && !empty($nomedespesa)){
+											echo $valordespesa;
+											echo "testando";
+											echo $datadespesa;
+											echo "datadespesa";
+											echo $nomedespesa;
+											echo "nomedespesa";
+
+										}
+
+
+									}
+
+
+								?>
+
 							</div>
 							
 					
