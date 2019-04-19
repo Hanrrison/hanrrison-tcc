@@ -42,10 +42,8 @@ if(isset($_POST['usuario'])){
     //verificar se esta preenchido
     if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha)) //se nao esta vazio
     {
-        /*$u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");*/
-        $u->getConnection();
-
+        $u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");
         if($u->msgErro == "")
         { //se esta ok
             if($senha == $confirmarsenha)
