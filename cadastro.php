@@ -3,6 +3,7 @@
 <?php
 require_once 'php/conexao.php';
 require_once 'class/usuario.php';
+$conn = new conexao;
 $u = new Usuario;
 
 ?>
@@ -40,10 +41,12 @@ if(isset($_POST['usuario'])){
     $senha = addslashes($_POST['senha']);
     $confirmarsenha = addslashes($_POST['confirmarsenha']);
     //verificar se esta preenchido
-    if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha))
+    if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha)) //se nao esta vazio
     {
-        $u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");
+        /*$u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");*/
+        $u->getConnection($conn);
+
         if($u->msgErro == "")
         { //se esta ok
             if($senha == $confirmarsenha)
