@@ -3,6 +3,7 @@
 <?php
 require_once 'php/conexao.php';
 require_once 'class/usuario.php';
+$conn = new conexao;
 $u = new Usuario;
 
 ?>
@@ -42,9 +43,8 @@ if(isset($_POST['usuario'])){
     //verificar se esta preenchido
     if(!empty($usuario) && !empty($email) && !empty($senha) && !empty($confirmarsenha)) //se nao esta vazio
     {
-       $u->conectar();
+       $conn->getConnection();
        
-
         if($u->msgErro == "")
         { //se esta ok
             if($senha == $confirmarsenha)

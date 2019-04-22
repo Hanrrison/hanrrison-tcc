@@ -2,6 +2,11 @@
 
 <?php
 	require_once 'php/conexao.php';
+	require_once 'class/importaxml.php';
+	require_once 'class/despesas.php';
+	$importaxml = new importaxml;
+	$despesa = new despesas;
+	$conn = new conexao;
 ?>
 
 
@@ -177,9 +182,6 @@
 										<input id="import-arquivo" type='file' name="impxml" accept=".xml" >
 											<?php
 
-												require_once 'class/importaxml.php';
-												
-												$importaxml = new importaxml;
 												$importacao = $importaxml->entradaxml();
 												
 												$teste = $importacao[0];
@@ -216,25 +218,25 @@
 								<?php
 									//criar a conexao no banco e gravar os dados
 
-									if(isset($_POST['valordespesa']) && isset($_POST['datadespesa']) && isset($_POST['nomedespesa'])){
-										$valordespesa = addslashes($_POST['valordespesa']);
-										$datadespesa = addslashes($_POST['datadespesa']);
-										$nomedespesa = addslashes($_POST['nomedespesa']);
+									if (isset($_POST['valordespesa']) && isset($_POST['nomedespesa']) && isset($_POST['datadespesa']) ) {
+											$valordespesa = addslashes($_POST['valordespesa']);
+											$nomedespesa = addslashes($_POST['nomedespesa']);
+											$datadespesa = addslashes($_POST['datadespesa']);
 
-										if(!empty($valordespesa) && !empty($datadespesa) && !empty($nomedespesa)){
-											// echo $valordespesa;
-											// echo "testando";
-											// echo $datadespesa;
-											// echo "datadespesa";
-											// echo $nomedespesa;
-											// echo "nomedespesa"; 
+											if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {
+												//conecta no banco de dados
+												$conn->getConnection();
 
-											//conecta no banco de dados
+												if ($despesa->adicionar_despesa($valordespesa, $nomedespesa, $datadespesa)) {
+													echo "<script>alert('Despesa cadastrada!');</script>";
+												}
 
+											}
 										}
 
 
-									}
+
+									
 
 
 								?>
