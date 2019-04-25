@@ -4,8 +4,10 @@
 	require_once 'php/conexao.php';
 	require_once 'class/importaxml.php';
 	require_once 'class/despesas.php';
+	require_once 'class/receitas.php';
 	$importaxml = new importaxml;
 	$despesa = new despesas;
+	$receita = new receitas;
 	$conn = new conexao;
 ?>
 
@@ -100,13 +102,15 @@
 									$datareceita = addslashes($_POST['datareceita']);
 									$nomereceita = addslashes($_POST['nomereceita']);
 
+									$datareceita = implode('-', array_reverse(explode('/', "$datareceita"))); //realiza conversao para db mysql
+
 									if(!empty($valorreceita) && !empty($datareceita) && !empty($nomereceita)){
-										echo $valorreceita;
-										echo "testando";
-										echo $datareceita;
-										echo "dtreceita";
-										echo $nomereceita;
-										echo "nomedespesa";
+										
+										$conn->getConnection();
+
+											if ($receita->adicionar_receita($valorreceita, $nomereceita, $datareceita)) {
+													echo "<script>alert('Receita cadastrada!');</script>";
+											}
 
 									}
 
@@ -212,31 +216,31 @@
 										</select>
 										
 										<div class="submitdespesas">
-											<input type ="submit" class="btndespesa" value="Confirmar Despesa">
+											<input type ="submit" class="btndespesa" name="confirmadespesa" value="Confirmar Despesa">
 										</div>
 								</form>
 								<?php
 									//criar a conexao no banco e gravar os dados
 
-									if (isset($_POST['valordespesa']) && isset($_POST['nomedespesa']) && isset($_POST['datadespesa']) ) {
-											$valordespesa = addslashes($_POST['valordespesa']);
-											$nomedespesa = addslashes($_POST['nomedespesa']);
-											$datadespesa = addslashes($_POST['datadespesa']);
+								if (isset($_POST['valordespesa']) && isset($_POST['nomedespesa']) && isset($_POST['datadespesa'])) {
+										$valordespesa = addslashes($_POST['valordespesa']);
+										$nomedespesa = addslashes($_POST['nomedespesa']);
+										$datadespesa = addslashes($_POST['datadespesa']);
+										$datadespesa = implode('-', array_reverse(explode('/', "$datadespesa"))); //realiza conversao para db mysql
 
-											if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {
-												//conecta no banco de dados
-												$conn->getConnection();
 
-												if ($despesa->adicionar_despesa($valordespesa, $nomedespesa, $datadespesa)) {
-													echo "<script>alert('Despesa cadastrada!');</script>";
-												}
+										if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {
+											//conecta no banco de dados
+											$conn->getConnection();
 
+											//criar verificacao para os dados nao estarem vazios
+											
+											if ($despesa->adicionar_despesa($valordespesa, $nomedespesa, $datadespesa)) {
+												echo "<script>alert('Despesa cadastrada!');</script>";
 											}
+
 										}
-
-
-
-									
+									} 
 
 
 								?>
