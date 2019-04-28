@@ -48,9 +48,17 @@
         }
         echo "</table>";
       return true; //ou $tabela
-
-
   }
+
+  public function soma_total_receitas(){
+    global $conn;
+       
+      $sql = $conn->prepare("SELECT SUM (valor_receita) FROM receitas");
+      $sql->execute();
+      
+  }
+
+
 
  }
 

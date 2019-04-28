@@ -4,6 +4,13 @@
 		//header("location: login.php");
 		//exit;
 	//}
+
+	require_once 'php/conexao.php';
+	require_once 'class/despesas.php';
+	require_once 'class/receitas.php';
+	$tabela_despesa = new despesas;
+	$tabela_receita = new receitas;
+	$conn = new conexao;
 ?>
 
 <!DOCTYPE html>
@@ -30,33 +37,32 @@
 	<header class="header">
 		<img height="100%" id="logo" src="http://www.chicledigital.com.br/wp-content/uploads/criacao-de-logotipo.png">
 		<div class="login" onclick="logout();">
-			<a href="#">Olá _Usuario</a>
+			Olá _Usuario
 		</div>
 	</header>
 
-	<nav id="menu">
-		<ul>
-			<li><a href="home.php">Dashboard</a></li>
-			<li><a href="transacoes.php">Transações</a></li>
-			<li><a href="#">Cadastro</a>
-
-				<ul>
-					<li><a href="#">Cadastro de Produtos</a></li>
-					<li><a href="#">Cadastro de Fornecedor</a></li>
-				</ul>
-			</li>
-
-			<li><a href="#">Movimentações</a>
-				
-				<ul>
-					<li><a href="#">Entradas</a></li>
-					<li><a href="#">Saídas</a></li>
-				</ul>
-			</li>
-
-			<li><a href="#">Contas</a></li>
-		</ul>
-	</nav>
+	<nav class="menu">
+			<ul>
+				<input type="radio" name="menu" id="archive" checked>
+				<li>
+					<label for="archive" class="title">Principal</label>
+					<a href="home.php">Dashboard</a>
+				</li>
+				<input type="radio" name="menu" id="edit">
+				<li>
+					<label for="edit" class="title">Cadastro</label>
+					<a href="#">Cadastro de Classificação</a>
+					<a href="#">Cadastro de Contas</a>
+				</li>
+				<input type="radio" name="menu" id="tools">
+				<li>
+					<label for="tools" class="title">Movimentação</label>
+					<a href="transacoes.php">Transações</a>
+					<a href="#">Receitas</a>
+					<a href="#">Despesas</a>
+				</li>
+			</ul>
+		</nav>
 
 
 	<div id="main">
@@ -84,16 +90,7 @@
 
 				<div class="cards">
 						<div class="item3">
-								
 						Contas a Receber<br>
-						R$: 2020,00
-					</div>
-				</div>
-
-				<div class="cards">
-						<div class="item4">
-								
-						Cartao<br>
 						R$: 2020,00
 					</div>
 				</div>
@@ -109,44 +106,12 @@
 						<h2 class="titlerendas">Últimas 5 rendas
 							<input type="button" class="btnrendas" value="Detalhes" onclick="detalhesrenda();">
 						</h2>
-						
-						<table class="tablerendas">
-						<tr>
-						  <th>Título</th>
-						  <th>Data</th>
-						  <th>Valor</th>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						 <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-					  </table>
+
+						<?php
+							$conn = new conexao;
+							$conn->getConnection();
+							$tabela_receita->ultimas_5_receitas();
+						?>
 					</div>
 					
 					
@@ -159,43 +124,12 @@
 							<input type="button" class="btndespesas" value="Detalhes" onclick="detalhesdespesas();">
 						</h2>
 						
-						<table class="tabledespesas">
-							<tr>
-							  <th>Título</th>
-							  <th>Data</th>
-							  <th>Valor</th>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							 <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-						  </table>
+						<?php
+						
+							$conn = new conexao;
+							$conn->getConnection();
+							$tabela_despesa->ultimas_5_despesas();
+						?>
 					</div>
 					
 				</div>

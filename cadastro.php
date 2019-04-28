@@ -24,7 +24,7 @@ $u = new Usuario;
 <body>
 	<!-- Conteúdo -->
 
-	<form method="POST">
+	<form method="POST" action="login.php">
         <h2>Cadastro</h2>
         <input type ="text" placeholder="Usuário" name="usuario" maxlength="40">
         <input type ="text" placeholder="E-mail" name="email" maxlength="40"> <!-- Incluir type email -->

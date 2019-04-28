@@ -52,7 +52,7 @@ if(isset($_POST['usuario'])){
                 if($u->login($usuario, $senha))
                 {
                     //header("location: home.php");
-                    //echo "<script type='text/javascript'>window.location = 'home.php'</script>";
+                    echo "<script type='text/javascript'>window.location = 'home.php'</script>";
                 } 
                 else
                 {

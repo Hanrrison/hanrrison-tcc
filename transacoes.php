@@ -38,29 +38,28 @@
 		</div>
 	</header>
 
-	<nav id="menu">
-		<ul>
-			<li><a href="home.php">Dashboard</a></li>
-			<li><a href="transacoes.php">Transações</a></li>
-			<li><a href="#">Cadastro</a>
-
-				<ul>
-					<li><a href="#">Cadastro de Produtos</a></li>
-					<li><a href="#">Cadastro de Fornecedor</a></li>
-				</ul>
-			</li>
-
-			<li><a href="#">Movimentações</a>
-				
-				<ul>
-					<li><a href="#">Entradas</a></li>
-					<li><a href="#">Saídas</a></li>
-				</ul>
-			</li>
-
-			<li><a href="#">Contas</a></li>
-		</ul>
-	</nav>
+	<nav class="menu">
+			<ul>
+				<input type="radio" name="menu" id="archive" checked>
+				<li>
+					<label for="archive" class="title">Principal</label>
+					<a href="home.php">Dashboard</a>
+				</li>
+				<input type="radio" name="menu" id="edit">
+				<li>
+					<label for="edit" class="title">Cadastro</label>
+					<a href="#">Cadastro de Classificação</a>
+					<a href="#">Cadastro de Contas</a>
+				</li>
+				<input type="radio" name="menu" id="tools">
+				<li>
+					<label for="tools" class="title">Movimentação</label>
+					<a href="transacoes.php">Transações</a>
+					<a href="#">Receitas</a>
+					<a href="#">Despesas</a>
+				</li>
+			</ul>
+		</nav>
 
 
 
@@ -169,7 +168,7 @@
 						<div class="despesas">
 								<form method="POST" enctype="multipart/form-data">
 										
-										<label for="import-arquivo">Importar XML</label>
+										<label for="import-arquivo" class="xml">Importar XML</label>
 										<input id="import-arquivo" type='file' name="impxml" accept=".xml" >
 											<?php
 
@@ -182,14 +181,14 @@
 												$datadanfe = $dh[0]; //data
 
 												$dd = $importacao[2];
-												echo $chavenfe = $dd[0];
+												$chavenfe = $dd[0];
 
 												$dataconvertida = $datadanfe; //variavel dataconvertida para formatar a string em date
 												$date = new DateTime($dataconvertida);
 												
 											?>
 
-										<label for="submit-arquivo">Confirmar XML</label>
+										<label for="submit-arquivo" class="xml">Confirmar XML</label>
 										<input type="submit" id="submit-arquivo" name="confirmaxml" value="Confirmar Importação"><br>		
 										
 									
@@ -237,6 +236,7 @@
 
 										if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {
 											//conecta no banco de dados
+											$conn = new conexao;
 											$conn->getConnection();
 
 											//criar verificacao para os dados nao estarem vazios
