@@ -36,8 +36,8 @@ class Usuario {
         $sql->execute();
         if($sql->rowCount() > 0){//entrando no sistema
             $dados = $sql->fetch();//transforma os dados do banco em array com os nomes das colunas
-            // session_start();
-            // $_SESSION['id_usuario'] = $dados['id_usuario'];          
+            //  session_start();
+            //  $_SESSION['id_usuario'] = $dados['id_usuario'];          
             return true; //usuario logado com sucesso
         } else{
             return false; //nao foi possivel logar

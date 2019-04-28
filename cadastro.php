@@ -24,7 +24,7 @@ $u = new Usuario;
 <body>
 	<!-- Conteúdo -->
 
-	<form method="POST" action="login.php">
+	<form method="POST">
         <h2>Cadastro</h2>
         <input type ="text" placeholder="Usuário" name="usuario" maxlength="40">
         <input type ="text" placeholder="E-mail" name="email" maxlength="40"> <!-- Incluir type email -->
@@ -52,6 +52,7 @@ if(isset($_POST['usuario'])){
                 if($u->cadastro_usuario($usuario, $email, $senha))
                 {   
                     echo "<script>alert('Usuario cadastrado com sucesso!');</script>";
+                    echo "<script type='text/javascript'>window.location = 'login.php'</script>";
                 } else{
                     echo "<script>alert('Usuario já cadastrado!');</script>";
                 }
