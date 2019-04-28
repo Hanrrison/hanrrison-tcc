@@ -28,15 +28,30 @@ class importaxml
                                 $UF = $enderEmit->UF;
                                 foreach ($xml->NFe->infNFe->total->ICMSTot as $valortotalnfe) {
                                     $vNF = $valortotalnfe->vNF; //pega o valor total da nota
+                                    foreach ($xml->protNFe as $protNFe) {
+                                        foreach ($xml->protNFe->infProt as $infProt) {
+                                           $chavenfe = $infProt->chNFe; //pega a chave da nfe
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+
+                 
+
+
+
         }
 
-        $dadosarray = array($vNF, $dhEmi);
+        
+
+   
+        
+
+        $dadosarray = array($vNF, $dhEmi, $chavenfe);
         return $dadosarray;
     }
 

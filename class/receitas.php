@@ -25,7 +25,32 @@
 
     }
 
+    public function ultimas_5_receitas(){
+      global $conn;
+       
+      $sql = $conn->prepare("SELECT nome_receita, valor_receita, data_receita
+      FROM receitas ORDER BY data_insercao DESC LIMIT 5");
+      $sql->execute();
+      $tabela = $sql->fetchAll();//transforma os dados do banco em array com os nomes das colunas
+     
+      echo "<table  class='tablerendas'>";
+      echo "<th>Titulo</th>";
+      echo "<th>Valor</th>";
+      echo "<th>Data</th>";
+      
+      
+        for($i=0; $i<count($tabela);$i++){
+            echo "<tr>";
+            for($j=0; $j<count($tabela[$i]);$j++){
+               echo "<td>".$tabela[$i][$j]."</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+      return true; //ou $tabela
 
+
+  }
 
  }
 

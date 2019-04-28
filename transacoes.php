@@ -40,8 +40,8 @@
 
 	<nav id="menu">
 		<ul>
-			<li><a href="../html/home.html">Dashboard</a></li>
-			<li><a href="../html/transacoes.html">Transações</a></li>
+			<li><a href="home.php">Dashboard</a></li>
+			<li><a href="transacoes.php">Transações</a></li>
 			<li><a href="#">Cadastro</a>
 
 				<ul>
@@ -104,6 +104,24 @@
 
 									$datareceita = implode('-', array_reverse(explode('/', "$datareceita"))); //realiza conversao para db mysql
 
+									if (empty ($valorreceita) && empty ($datareceita) && empty ($nomereceita)){
+										echo "<script>alert('Preencha todos os dados');</script>";
+									} else{
+										if (empty ($valorreceita)){
+											echo "<script>alert('Preencha o valor da receita');</script>";
+										}else{
+											if (empty ($datareceita)){
+												echo "<script>alert('Preencha a data da receita');</script>";
+											}else{
+												if (empty ($nomereceita)){
+													echo "<script>alert('Preencha o nome da receita');</script>";
+												}
+											}
+										}
+									}
+
+
+
 									if(!empty($valorreceita) && !empty($datareceita) && !empty($nomereceita)){
 										
 										$conn->getConnection();
@@ -132,43 +150,12 @@
 							<input type="button" class="btnrendas" value="Detalhes" onclick="detalhesrenda();">
 						</h2>
 						<br>
-						<table class="tablerendas">
-						<tr>
-						  <th>Título</th>
-						  <th>Data</th>
-						  <th>Valor</th>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						 <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-						<tr>
-						  <td>Farmácia</td>
-						  <td>10-01-2019</td>
-						  <td>R$: 100,00</td>
-						</tr>
-					  </table>
+						<?php		
+							$tabela_receita = new receitas;
+							$conn = new conexao;
+							$conn->getConnection();
+							$tabela_receita->ultimas_5_receitas();
+						?>
 					</div>
 
 				</div>
@@ -194,6 +181,8 @@
 												$dh = $importacao[1];
 												$datadanfe = $dh[0]; //data
 
+												$dd = $importacao[2];
+												echo $chavenfe = $dd[0];
 
 												$dataconvertida = $datadanfe; //variavel dataconvertida para formatar a string em date
 												$date = new DateTime($dataconvertida);
@@ -222,11 +211,28 @@
 								<?php
 									//criar a conexao no banco e gravar os dados
 
+
 								if (isset($_POST['valordespesa']) && isset($_POST['nomedespesa']) && isset($_POST['datadespesa'])) {
 										$valordespesa = addslashes($_POST['valordespesa']);
 										$nomedespesa = addslashes($_POST['nomedespesa']);
 										$datadespesa = addslashes($_POST['datadespesa']);
 										$datadespesa = implode('-', array_reverse(explode('/', "$datadespesa"))); //realiza conversao para db mysql
+
+										// if (empty ($valordespesa) && empty ($datadespesa) && empty ($nomedespesa)){//verifica se estao preenchidos corretamente os campos
+										// 	echo "<script>alert('Preencha todos os dados');</script>";
+										// } else{
+										// 	if (empty ($valordespesa)){
+										// 		echo "<script>alert('Preencha o valor da despesa');</script>";
+										// 	}else{
+										// 		if (empty ($datadespesa)){
+										// 			echo "<script>alert('Preencha a data da despesa');</script>";
+										// 		}else{
+										// 			if (empty ($nomedespesa)){
+										// 				echo "<script>alert('Preencha o nome da despesa');</script>";
+										// 			}
+										// 		}
+										// 	}
+										// }
 
 
 										if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {
@@ -235,14 +241,13 @@
 
 											//criar verificacao para os dados nao estarem vazios
 											
+
 											if ($despesa->adicionar_despesa($valordespesa, $nomedespesa, $datadespesa)) {
 												echo "<script>alert('Despesa cadastrada!');</script>";
 											}
 
 										}
 									} 
-
-
 								?>
 
 							</div>
@@ -258,43 +263,12 @@
 							<input type="button" class="btndespesas" value="Detalhes" onclick="detalhesdespesas();">
 						</h2>
 						<br>
-						<table class="tabledespesas">
-							<tr>
-							  <th>Título</th>
-							  <th>Data</th>
-							  <th>Valor</th>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							 <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-							<tr>
-							  <td>Farmácia</td>
-							  <td>10-01-2019</td>
-							  <td>R$: 100,00</td>
-							</tr>
-						  </table>
+						<?php		
+							$tabela_despesa = new despesas;
+							$conn = new conexao;
+							$conn->getConnection();
+							$tabela_despesa->ultimas_5_despesas();
+						?>
 					</div>
 					
 				</div>

@@ -264,14 +264,14 @@ a{
 
 
 .tablerendas {
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
     /*border: solid;*/
     width: 97.5%;
     margin: 10px;
 }
 
 .tabledespesas {
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
    /* border: solid;*/
     width: 97.5%;
     margin: 10px;

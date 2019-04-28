@@ -3,6 +3,7 @@
 require_once 'php/conexao.php';
 require_once 'class/usuario.php';
 $u = new Usuario;
+$conn = new conexao;
 
 ?>
 
@@ -44,8 +45,7 @@ if(isset($_POST['usuario'])){
     //verificar se esta preenchido
         if(!empty($usuario) && !empty($senha))
         {
-            $u->conectar("a5cs5fjis77aj3b5", "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-            "lwk8f7zk8565v63f","z9zpne3a9ulmh9hg");
+            $conn->getConnection();
 
             if($u->msgErro == "")
             {
