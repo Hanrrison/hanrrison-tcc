@@ -53,9 +53,13 @@
   public function soma_total_receitas(){
     global $conn;
        
-      $sql = $conn->prepare("SELECT SUM (valor_receita) FROM receitas");
+      $sql = $conn->prepare("SELECT SUM(valor_receita) as vtreceitas FROM receitas");
       $sql->execute();
-      
+      $resultado = $sql->fetch();
+      $soma = $resultado['vtreceitas'];
+      echo "Contas a receber<br>";
+      echo number_format($soma, 2, '.', '.');
+      return true;
   }
 
 

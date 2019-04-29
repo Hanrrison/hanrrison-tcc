@@ -49,6 +49,17 @@ class despesas{
 
     }
 
+    public function soma_total_despesas(){
+      global $conn;
+         
+        $sql = $conn->prepare("SELECT SUM(valor_despesa) as vtdespesas FROM despesas");
+        $sql->execute();
+        $resultado = $sql->fetch();
+        $soma = $resultado['vtdespesas'];
+        echo "Contas a pagar<br>";
+        echo number_format($soma, 2, '.', '.');
+        return true;
+    }
     
 
 

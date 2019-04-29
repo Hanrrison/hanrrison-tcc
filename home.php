@@ -82,16 +82,23 @@
 
 				<div class="cards">
 						<div class="item2">
-							
-						Contas a Pagar<br>
-						R$: 2020,00
+						<?php
+						$conn = new conexao;
+						$conn->getConnection();
+						$pagar = new despesas;
+						$pagar->soma_total_despesas();
+						?>
 					</div>
 				</div>
 
 				<div class="cards">
 						<div class="item3">
-						Contas a Receber<br>
-						R$: 2020,00
+						<?php
+							$conn = new conexao;
+							$conn->getConnection();
+							$receber = new receitas;
+							$receber->soma_total_receitas();
+						?>
 					</div>
 				</div>
 			</div>
