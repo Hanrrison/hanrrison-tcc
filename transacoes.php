@@ -123,6 +123,7 @@
 
 									if(!empty($valorreceita) && !empty($datareceita) && !empty($nomereceita)){
 										
+										$conn = new conexao;
 										$conn->getConnection();
 
 											if ($receita->adicionar_receita($valorreceita, $nomereceita, $datareceita)) {
@@ -181,7 +182,7 @@
 												$datadanfe = $dh[0]; //data
 
 												$dd = $importacao[2];
-												$chavenfe = $dd[0];
+												$chavenfe = $dd[0]; //criar input hidden
 
 												$dataconvertida = $datadanfe; //variavel dataconvertida para formatar a string em date
 												$date = new DateTime($dataconvertida);
@@ -196,6 +197,8 @@
 									<input type="text" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo $date->format('d/m/Y');?>"><br>
 
 									<input type="text" name="nomedespesa" placeholder="Nome">
+									<input type="hidden" name="chavenfe" value="<?php echo $chavenfe;?>">
+
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>
 										</select>
@@ -213,9 +216,10 @@
 
 								if (isset($_POST['valordespesa']) && isset($_POST['nomedespesa']) && isset($_POST['datadespesa'])) {
 										$valordespesa = addslashes($_POST['valordespesa']);
-										$nomedespesa = addslashes($_POST['nomedespesa']);
+										$nomedespesa = addslashes($_POST['nomedespesa']);										
 										$datadespesa = addslashes($_POST['datadespesa']);
 										$datadespesa = implode('-', array_reverse(explode('/', "$datadespesa"))); //realiza conversao para db mysql
+										$chavenfe = addslashes($_POST['chavenfe']);
 
 										// if (empty ($valordespesa) && empty ($datadespesa) && empty ($nomedespesa)){//verifica se estao preenchidos corretamente os campos
 										// 	echo "<script>alert('Preencha todos os dados');</script>";
@@ -231,7 +235,15 @@
 										// 			}
 										// 		}
 										// 	}
-										// }
+										// }	
+
+										
+											if ($chavenfe == ""){
+												echo "valor vazio";
+												
+											}else{
+												echo $chavenfe;
+											}
 
 
 										if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {
@@ -239,10 +251,12 @@
 											$conn = new conexao;
 											$conn->getConnection();
 
+											
+
 											//criar verificacao para os dados nao estarem vazios
 											
 
-											if ($despesa->adicionar_despesa($valordespesa, $nomedespesa, $datadespesa)) {
+											if ($despesa->adicionar_despesa($valordespesa, $nomedespesa, $datadespesa, $chavenfe)){												
 												echo "<script>alert('Despesa cadastrada!');</script>";
 											}
 

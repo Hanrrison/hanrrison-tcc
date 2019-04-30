@@ -2,14 +2,15 @@
 
 class despesas{
 
-    public function adicionar_despesa($valordespesa, $nomedespesa, $datadespesa){
+    public function adicionar_despesa($valordespesa, $nomedespesa, $datadespesa, $chavenfe){
          global $conn;
 
-           $sql = $conn->prepare("INSERT INTO despesas (nome_despesa, valor_despesa, data_despesa) 
-            VALUES (:nomedespesa, :valordespesa, :datadespesa)");
+           $sql = $conn->prepare("INSERT INTO despesas (nome_despesa, valor_despesa, data_despesa, chavenfe) 
+            VALUES (:nomedespesa, :valordespesa, :datadespesa, :chavenfe)");
           $sql->bindValue(":nomedespesa", $nomedespesa);
           $sql->bindValue(":valordespesa", $valordespesa);
           $sql->bindValue(":datadespesa", $datadespesa);
+          $sql->bindValue(":chavenfe", $chavenfe);
           $sql->execute();
           return true; //cadastrado com sucesso         
     }
@@ -25,11 +26,11 @@ class despesas{
     public function ultimas_5_despesas(){
         global $conn;
          
-        $sql = $conn->prepare("SELECT nome_despesa, valor_despesa, data_despesa
+        $sql = $conn->prepare("SELECT nome_despesa, valor_despesa, DATE_FORMAT (data_despesa, '%d-%m-%Y') as data_despesa
         FROM despesas ORDER BY data_insercao DESC LIMIT 5");
         $sql->execute();
         $tabela = $sql->fetchAll();//transforma os dados do banco em array com os nomes das colunas
-       
+        
         echo "<table  class='tabledespesas'>";
         echo "<th>Titulo</th>";
         echo "<th>Valor</th>";
@@ -38,7 +39,7 @@ class despesas{
         
           for($i=0; $i<count($tabela);$i++){
               echo "<tr>";
-              for($j=0; $j<count($tabela[$i]);$j++){
+              for($j=0; $j<3;$j++){
                  echo "<td>".$tabela[$i][$j]."</td>";
               }
               echo "</tr>";

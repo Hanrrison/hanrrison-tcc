@@ -116,7 +116,6 @@ input[type="radio"] {
 .info{
     width: 95%; /*da pra usar 96, estava 93*/
     height: 100%;
-    border: 2px solid black;
     border-spacing: 10px;
     margin: 30px;
 }
@@ -290,14 +289,14 @@ input[type="radio"] {
 
 
 .tablerendas {
-    /*border-collapse: collapse;*/
+    border-collapse: collapse;
     /*border: solid;*/
     width: 97.5%;
     margin: 10px;
 }
 
 .tabledespesas {
-    /*border-collapse: collapse;*/
+    border-collapse: collapse;
    /* border: solid;*/
     width: 97.5%;
     margin: 10px;
@@ -364,7 +363,6 @@ td {
 .receitas, .despesas{
     width: auto;
     margin: 10px;
-    border: 1px solid black;
 }
 
 .submitreceitas, .submitdespesas{

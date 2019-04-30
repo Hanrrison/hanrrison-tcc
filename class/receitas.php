@@ -28,8 +28,8 @@
     public function ultimas_5_receitas(){
       global $conn;
        
-      $sql = $conn->prepare("SELECT nome_receita, valor_receita, data_receita
-      FROM receitas ORDER BY data_insercao DESC LIMIT 5");
+      $sql = $conn->prepare("SELECT nome_receita, valor_receita, DATE_FORMAT (data_receita, '%d-%m-%Y') as data_receita
+      FROM receitas ORDER BY data_receita DESC LIMIT 5");
       $sql->execute();
       $tabela = $sql->fetchAll();//transforma os dados do banco em array com os nomes das colunas
      
@@ -41,7 +41,7 @@
       
         for($i=0; $i<count($tabela);$i++){
             echo "<tr>";
-            for($j=0; $j<count($tabela[$i]);$j++){
+            for($j=0; $j<3;$j++){
                echo "<td>".$tabela[$i][$j]."</td>";
             }
             echo "</tr>";
