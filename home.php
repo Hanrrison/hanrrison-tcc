@@ -1,9 +1,9 @@
 <?php
-//session_start();
-	//if(!isset($_SESSION['id_usuario'])){//se nao esta logado, volta pra tela login
-		//header("location: login.php");
-		//exit;
-	//}
+session_start();
+	if(!isset($_SESSION['id_usuario'])){//se nao esta logado, volta pra tela login
+		header("location: login.php");
+		exit;
+	}
 
 	require_once 'php/conexao.php';
 	require_once 'class/despesas.php';
@@ -37,7 +37,7 @@
 	<header class="header">
 		<img height="100%" id="logo" src="http://www.chicledigital.com.br/wp-content/uploads/criacao-de-logotipo.png">
 		<div class="login" onclick="logout();">
-			Olá _Usuario
+			<?php echo "Bem vindo, " . $_SESSION['usuario'];?>
 		</div>
 	</header>
 
@@ -132,7 +132,6 @@
 						</h2>
 						
 						<?php
-						
 							$conn = new conexao;
 							$conn->getConnection();
 							$tabela_despesa->ultimas_5_despesas();

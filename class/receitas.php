@@ -7,13 +7,26 @@
 
         global $conn;
 
-        $sql = $conn->prepare("INSERT INTO receitas (nome_receita, valor_receita, data_receita) 
-         VALUES (:nomereceita, :valorreceita, :datareceita)");
+        // $sql = $conn->prepare("SELECT id_usuario FROM usuarios
+        // WHERE id_usuario = ".$_SESSION['id_usuario']." ");
+        // $sql->execute();
+        $id_usuario = $_SESSION['id_usuario'];
+
+
+        $sql = $conn->prepare("INSERT INTO receitas (id_usuario, nome_receita, valor_receita, data_receita) 
+         VALUES ($id_usuario, :nomereceita, :valorreceita, :datareceita)");
        $sql->bindValue(":nomereceita", $nomereceita);
        $sql->bindValue(":valorreceita", $valorreceita);
        $sql->bindValue(":datareceita", $datareceita);
        $sql->execute();
        return true; //cadastrado com sucesso         
+
+
+
+
+        // $sql = $strcon->query('SELECT cd_aluno FROM tb_aluno WHERE cd_rm_aluno = ' . $_SESSION['aluno'] );
+        // $row = $sql->fetch_assoc();
+        // $strcon->query( 'INSERT INTO item_workshop_aluno(cd_workshop, cd_aluno) VALUES (1, ' . $row['cd_aluno'] . ' )' );
     
     }
 
@@ -28,8 +41,10 @@
     public function ultimas_5_receitas(){
       global $conn;
        
+      $id_usuario = $_SESSION['id_usuario'];
+
       $sql = $conn->prepare("SELECT nome_receita, valor_receita, DATE_FORMAT (data_receita, '%d-%m-%Y') as data_receita
-      FROM receitas ORDER BY data_receita DESC LIMIT 5");
+      FROM receitas WHERE id_usuario = $id_usuario ORDER BY data_receita DESC LIMIT 5");
       $sql->execute();
       $tabela = $sql->fetchAll();//transforma os dados do banco em array com os nomes das colunas
      
@@ -53,7 +68,9 @@
   public function soma_total_receitas(){
     global $conn;
        
-      $sql = $conn->prepare("SELECT SUM(valor_receita) as vtreceitas FROM receitas");
+    $id_usuario = $_SESSION['id_usuario'];
+
+      $sql = $conn->prepare("SELECT SUM(valor_receita) as vtreceitas FROM receitas WHERE id_usuario = $id_usuario");
       $sql->execute();
       $resultado = $sql->fetch();
       $soma = $resultado['vtreceitas'];

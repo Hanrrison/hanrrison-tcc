@@ -5,8 +5,10 @@ class despesas{
     public function adicionar_despesa($valordespesa, $nomedespesa, $datadespesa, $chavenfe){
          global $conn;
 
-           $sql = $conn->prepare("INSERT INTO despesas (nome_despesa, valor_despesa, data_despesa, chavenfe) 
-            VALUES (:nomedespesa, :valordespesa, :datadespesa, :chavenfe)");
+         $id_usuario = $_SESSION['id_usuario'];
+
+           $sql = $conn->prepare("INSERT INTO despesas (id_usuario, nome_despesa, valor_despesa, data_despesa, chavenfe) /*pegar id da sessao*/
+            VALUES ($id_usuario, :nomedespesa, :valordespesa, :datadespesa, :chavenfe)");
           $sql->bindValue(":nomedespesa", $nomedespesa);
           $sql->bindValue(":valordespesa", $valordespesa);
           $sql->bindValue(":datadespesa", $datadespesa);
@@ -26,8 +28,10 @@ class despesas{
     public function ultimas_5_despesas(){
         global $conn;
          
+        $id_usuario = $_SESSION['id_usuario'];
+
         $sql = $conn->prepare("SELECT nome_despesa, valor_despesa, DATE_FORMAT (data_despesa, '%d-%m-%Y') as data_despesa
-        FROM despesas ORDER BY data_insercao DESC LIMIT 5");
+        FROM despesas WHERE id_usuario = $id_usuario ORDER BY data_insercao DESC LIMIT 5");
         $sql->execute();
         $tabela = $sql->fetchAll();//transforma os dados do banco em array com os nomes das colunas
         
@@ -53,7 +57,9 @@ class despesas{
     public function soma_total_despesas(){
       global $conn;
          
-        $sql = $conn->prepare("SELECT SUM(valor_despesa) as vtdespesas FROM despesas");
+      $id_usuario = $_SESSION['id_usuario'];
+
+        $sql = $conn->prepare("SELECT SUM(valor_despesa) as vtdespesas FROM despesas WHERE id_usuario = $id_usuario");
         $sql->execute();
         $resultado = $sql->fetch();
         $soma = $resultado['vtdespesas'];

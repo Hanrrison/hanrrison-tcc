@@ -5,7 +5,8 @@
 }
 
 body{
-    background: #1e262c;
+   /* background: #1e262c;*/
+    background: white;
     display: flex;
     min-height: 100vh;
 }

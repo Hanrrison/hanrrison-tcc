@@ -1,6 +1,10 @@
-<!DOCTYPE html>
-
 <?php
+session_start();
+	if(!isset($_SESSION['id_usuario'])){//se nao esta logado, volta pra tela login
+		header("location: login.php");
+		exit;
+	}
+
 	require_once 'php/conexao.php';
 	require_once 'class/importaxml.php';
 	require_once 'class/despesas.php';
@@ -11,6 +15,7 @@
 	$conn = new conexao;
 ?>
 
+<!DOCTYPE html>
 
 <html>
 
@@ -34,7 +39,7 @@
 	<header class="header">
 		<img height="100%" id="logo" src="http://www.chicledigital.com.br/wp-content/uploads/criacao-de-logotipo.png">
 		<div class="login">
-			SAIR
+		<?php echo "Bem vindo, " . $_SESSION['usuario'];?>
 		</div>
 	</header>
 

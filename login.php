@@ -24,7 +24,7 @@ $conn = new conexao;
 <body>
     <!-- Conteúdo -->
     
-	<form method="POST">
+	<form method="POST" action="php/validalogin.php">
         <h2>Login</h2>
         <input type ="text" placeholder="Usuário" name="usuario">
         <input type ="password" placeholder="Senha" name="senha">
@@ -52,7 +52,7 @@ if(isset($_POST['usuario'])){
                 if($u->login($usuario, $senha))
                 {
                     //header("location: home.php");
-                    echo "<script type='text/javascript'>window.location = 'home.php'</script>";
+                    //echo "<script type='text/javascript'>window.location = 'home.php'</script>";
                 } 
                 else
                 {
