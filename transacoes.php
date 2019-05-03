@@ -39,7 +39,10 @@ session_start();
 	<header class="header">
 		<img height="100%" id="logo" src="http://www.chicledigital.com.br/wp-content/uploads/criacao-de-logotipo.png">
 		<div class="login">
-		<?php echo "Bem vindo, " . $_SESSION['usuario'];?>
+		<?php echo "Bem vindo, " . $_SESSION['usuario'];
+		
+		?>
+		
 		</div>
 	</header>
 
@@ -54,7 +57,7 @@ session_start();
 				<li>
 					<label for="edit" class="title">Cadastro</label>
 					<a href="#">Cadastro de Classificação</a>
-					<a href="#">Cadastro de Contas</a>
+					<a href="contas.php">Cadastro de Contas</a>
 				</li>
 				<input type="radio" name="menu" id="tools">
 				<li>
@@ -86,8 +89,9 @@ session_start();
 						<div class="receitas">
 							<form method="POST">
 
+									
 									<input type="text" size="10" name="valorreceita" placeholder="R$: 0.00">
-									<input type="text" name="datareceita" placeholder="DD/MM/YYYY" value="<?php echo date("d/m/Y");?>"><br>
+									<input type="text" size="10" name="datareceita" placeholder="DD/MM/YYYY" value="<?php echo date("d/m/Y");?>"><br>
 									<input type="text" name="nomereceita" placeholder="Nome">
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>
@@ -199,7 +203,7 @@ session_start();
 										
 									
 									<input type="text" size="10" name="valordespesa" placeholder="R$: 0.00" value="<?php echo $valordanfe;?>">
-									<input type="text" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo $date->format('d/m/Y');?>"><br>
+									<input type="text" size="10" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo $date->format('d/m/Y');?>"><br>
 
 									<input type="text" name="nomedespesa" placeholder="Nome">
 									<input type="hidden" name="chavenfe" value="<?php echo $chavenfe;?>">
@@ -226,6 +230,9 @@ session_start();
 										$datadespesa = implode('-', array_reverse(explode('/', "$datadespesa"))); //realiza conversao para db mysql
 										$chavenfe = addslashes($_POST['chavenfe']);
 
+										
+
+										//quando importa xml, ele pede pra preencher tudo os dados
 										// if (empty ($valordespesa) && empty ($datadespesa) && empty ($nomedespesa)){//verifica se estao preenchidos corretamente os campos
 										// 	echo "<script>alert('Preencha todos os dados');</script>";
 										// } else{
@@ -243,12 +250,12 @@ session_start();
 										// }	
 
 										
-											if ($chavenfe == ""){
-												echo "valor vazio";
+											// if ($chavenfe == ""){
+											// 	echo "valor vazio";
 												
-											}else{
-												echo $chavenfe;
-											}
+											// }else{
+											// 	echo $chavenfe;
+											// }
 
 
 										if (!empty($valordespesa) && !empty($nomedespesa) && !empty($datadespesa)) {

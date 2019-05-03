@@ -8,6 +8,7 @@ session_start();
 	require_once 'php/conexao.php';
 	require_once 'class/despesas.php';
 	require_once 'class/receitas.php';
+	require_once 'class/usuario.php';
 	$tabela_despesa = new despesas;
 	$tabela_receita = new receitas;
 	$conn = new conexao;
@@ -52,7 +53,7 @@ session_start();
 				<li>
 					<label for="edit" class="title">Cadastro</label>
 					<a href="#">Cadastro de Classificação</a>
-					<a href="#">Cadastro de Contas</a>
+					<a href="contas.php">Cadastro de Contas</a>
 				</li>
 				<input type="radio" name="menu" id="tools">
 				<li>
@@ -75,9 +76,13 @@ session_start();
 			<div class="infocardswrap">
 				<div class="cards">
 						<div class="item">
-							
-						Saldo<br>
-						R$: 2020,00</div>
+							<?php
+							$conn = new conexao;
+							$conn->getConnection();
+							$saldo = new usuario;
+							$saldo->saldo_usuario();
+							?>
+						</div>
 				</div>
 
 				<div class="cards">

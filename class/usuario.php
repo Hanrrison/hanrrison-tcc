@@ -45,6 +45,37 @@ class Usuario {
     //     }
         
     // }
+
+
+    public function conta_usuario($conta, $saldo, $tipodeconta){
+        global $conn;
+
+        $id_usuario = $_SESSION['id_usuario'];
+
+        $sql = $conn->prepare("INSERT INTO contas (id_usuario, conta, saldo, tipodeconta) 
+         VALUES ($id_usuario, :conta, :saldo, :tipodeconta)");
+       $sql->bindValue(":conta", $conta);
+       $sql->bindValue(":saldo", $saldo);
+       $sql->bindValue(":tipodeconta", $tipodeconta);
+       $sql->execute();
+       return true;
+
+    }
+
+    public function saldo_usuario(){
+        global $conn;
+
+        $id_usuario = $_SESSION['id_usuario'];
+
+        $sql = $conn->prepare("SELECT SUM(saldo) as vtsaldo FROM contas WHERE id_usuario = $id_usuario");
+        $sql->execute();
+        $resultado = $sql->fetch();
+        $soma = $resultado['vtsaldo'];
+        echo "Saldo<br>";
+        echo number_format($soma, 2, '.', '.');
+        return true;
+
+    }
     
 }
 

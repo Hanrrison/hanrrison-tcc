@@ -21,8 +21,7 @@ $sql = $conn->prepare("SELECT id_usuario FROM usuarios
              header('location: /home.php');
         } else{
             unset ($_SESSION['id_usuario']);
-            header("location: /login.php");
-            return false; //nao foi possivel logar
+            header("location: /login.php");//nao foi possivel logar
         }
 
 
