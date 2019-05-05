@@ -213,6 +213,10 @@ session_start();
 										</select>
 									<select name="conta">
 										<option value="">Selecione a Conta</option>
+										<?php
+										//mostrar as contas que o cliente tem cadastrado
+										//ex itau, carteira etc
+										?>
 										</select>
 										
 										<div class="submitdespesas">

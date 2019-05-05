@@ -37,8 +37,9 @@ session_start();
 
 	<header class="header">
 		<img height="100%" id="logo" src="http://www.chicledigital.com.br/wp-content/uploads/criacao-de-logotipo.png">
-		<div class="login" onclick="logout();">
-			<?php echo "Bem vindo, " . $_SESSION['usuario'];?>
+		<div class="login">
+			<?php echo "Bem vindo, " . $_SESSION['usuario'];
+			?>
 		</div>
 	</header>
 

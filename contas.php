@@ -70,7 +70,7 @@ $conn = new conexao;
 	<div id="main">
 
 		<div class="pagetitle">
-			<h2>Cadastro de Fornecedor</h2>
+			<h2>Cadastro de Contas</h2>
 		</div>
 
 
@@ -120,10 +120,10 @@ $conn = new conexao;
                             <label>Tipo
 							<select name="tipodeconta">
 								<option value=""><span>Tipo de conta</span></option>
-								<option name="Dinheiro">Dinheiro</option>
+								<option name="Carteira">Carteira</option>
                                 <option name="Conta Corrente">Conta Corrente</option>
-                                <option value="Poupanca">Poupança</option>
-                                <option value="Outros">Outros</option>
+                                <option name="Poupanca">Poupança</option>
+                                <option name="Outros">Outros</option>
 							</select></label><br>
 
 							<input type ="submit" value="confirmarconta">
@@ -138,8 +138,20 @@ $conn = new conexao;
 						$saldo = addslashes($_POST['saldo']);
 						$tipodeconta = addslashes($_POST['tipodeconta']);
 
-						if(empty($tipodeconta)){
-							echo "<script>alert('Preencha o tipo da conta');</script>";
+						if(empty($conta) && empty($saldo) && empty($tipodeconta)){
+							echo "<script>alert('Preencha todos os dados');</script>";
+						}else{
+							if(empty($conta)){
+								echo "<script>alert('Preencha o nome da conta');</script>";
+							}else{
+								if(empty($saldo)){
+									echo "<script>alert('Preencha o saldo');</script>";
+								}else{
+									if(empty($tipodeconta)){
+										echo "<script>alert('Preencha o tipo da conta');</script>";
+									}
+								}
+							}
 						}
 
 						if(!empty($conta) && !empty($saldo) && !empty($tipodeconta)){
