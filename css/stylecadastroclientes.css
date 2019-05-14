@@ -1,0 +1,237 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    background-color:rgb(255, 255, 255);
+}
+
+#main{
+    margin-left: 150px; /* margem em relacao ao menu */
+    padding-top: 80px;
+}
+
+#menu{
+    width: 150px;
+    float: left;
+    margin-top: 55px;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10;
+    width: 150px; /* largura do menu */
+    background-color: rgb(0, 119, 255);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+#menu ul li {
+    display: block; 
+    text-align: center;
+    margin: 2px;
+    padding: 10px;
+}
+
+#menu ul li a {
+    padding: 2px 10px;
+    display: block;
+    /* visual do link */
+    background-color:#212529;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#menu ul li a:hover {
+    
+    color: #FFFFFF;
+    border: 0.1em solid #FFFFFF;
+    border-radius: 5px;
+}
+
+.header{
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    background:rgb(0, 119, 255);
+}
+
+.login{
+    float: right;
+    margin: 10px;
+    padding: 8px;
+    color: #FFFFFF;
+    width: 50px;
+}
+
+#logo{
+    position: absolute;
+    left: 25px;
+}
+
+.info{
+    width: 95%; /*da pra usar 96, estava 93*/
+    height: 100%;
+    border: 2px solid black;
+    border-spacing: 10px;
+    margin: 30px;
+   
+
+}
+
+
+.infocards{
+    width: 95%;
+    height: 20%;
+    border: 2px solid black;
+    border-spacing: 10px;
+    text-align: center;
+    margin: 30px;
+}
+
+.cards{
+    width: 220px;
+    height: 105px;
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+    display: inline-flex;
+    background: red;
+    
+}
+
+.cardsbutton{
+    width: 100px;
+    height: 100%;
+    background: black;
+    border: 2px solid gray;
+    border: 10px;
+ 
+}
+
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: white;    
+}
+.box {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: gray;
+    width: 250px;
+    /* O flex: 1; é necessário para que cada item se expanda
+     ocupando o tamanho máximo do container. */
+    flex: 1;
+
+}
+
+.box2{
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: silver;
+    width: 250px;
+    flex: 1;
+
+}
+
+
+.box3{
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: cadetblue;
+}
+
+.boxtitle{
+    background: white;
+    border: 2px solid black;
+   
+
+}
+
+.button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin: 2px;
+    cursor: pointer;
+    float: right;
+
+}
+
+.button1 {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin: 2px;
+    cursor: pointer;
+    float: right;
+
+}
+
+.button2 {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin: 2px;
+    cursor: pointer;
+    float: right;
+
+}
+
+
+
+.rodape{
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    /*background: rgb(244, 248, 7);*/
+}
+
+.pagetitle{
+    margin-left: 30px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

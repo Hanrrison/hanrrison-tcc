@@ -68,7 +68,34 @@ class despesas{
         return true;
     }
     
+    public function todasdespesas(){
+      global $conn;
+       
+      $id_usuario = $_SESSION['id_usuario'];
 
+      $sql = $conn->prepare("SELECT nome_despesa, valor_despesa, DATE_FORMAT (data_despesa, '%d-%m-%Y') as data_despesa
+      FROM despesas WHERE id_usuario = $id_usuario ORDER BY data_insercao DESC");
+      $sql->execute();
+      $tabela = $sql->fetchAll();//transforma os dados do banco em array com os nomes das colunas
+      
+      echo "<table  class='tabledespesas'>";
+      echo "<th>Titulo</th>";
+      echo "<th>Valor</th>";
+      echo "<th>Data</th>";
+      
+      
+        for($i=0; $i<count($tabela);$i++){
+            echo "<tr>";
+            for($j=0; $j<3;$j++){
+               echo "<td>".$tabela[$i][$j]."</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+      return true; //ou $tabela
+
+
+  }
 
 
 

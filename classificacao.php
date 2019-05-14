@@ -21,7 +21,7 @@ $conn = new conexao;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	
-	<link rel="stylesheet" href="../css/contas.css">
+	<link rel="stylesheet" href="../css/classificacao.css">
 
 
 	<title>Bem vindo a home</title>
@@ -33,7 +33,7 @@ $conn = new conexao;
 	<!-- Conteúdo -->
 
 	<header class="header">
-	<img height="100%" id="logo" src="../logotipo.png">
+		<img height="100%" id="logo" src="../logotipo.png">
 		<div class="login">
 		<?php echo "Bem vindo, " . $_SESSION['usuario'];
 		
@@ -70,7 +70,7 @@ $conn = new conexao;
 	<div id="main">
 
 		<div class="pagetitle">
-			<h2>Cadastro de Contas</h2>
+			<h2>Cadastro de Classificação</h2>
 		</div>
 
 		<div class="info">
@@ -80,63 +80,41 @@ $conn = new conexao;
 					<form method="POST">
 						<fieldset>
                             
-							<input type="text" size="10" name="conta" placeholder="Conta">
-                            <input type="text" size="10" name="saldo" placeholder="Saldo">
+							<input type="text" size="12" name="classificacao" placeholder="Classificaçao">
                           
 
                             <label>Tipo
-							<select name="tipodeconta">
-								<option value=""><span>Tipo de conta</span></option>
-								<option name="Carteira">Carteira</option>
-                                <option name="Conta Corrente">Conta Corrente</option>
-                                <option name="Poupanca">Poupança</option>
-                                <option name="Outros">Outros</option>
+							<select name="tipoclassificacao">
+								<option value=""><span>Tipo de Classificacao</span></option>
+								<?php
+									$conn = new conexao;
+									$conn->getConnection();
+									echo $usuario->tipoclassificacao();
+								?>
 							</select></label><br>
 
-							<input type ="submit" class="btncontas" value="Confirmar">
+							<input type ="submit" class="btnclassificacao" value="Confirmar">
 
 						</fieldset>
 					</form>
 
 					<?php
 					
-					if(isset($_POST['conta']) && isset($_POST['saldo']) && isset($_POST['tipodeconta'])){
-						$conta = addslashes($_POST['conta']);
-						$saldo = addslashes($_POST['saldo']);
-						$tipodeconta = addslashes($_POST['tipodeconta']);
+					if(isset($_POST['classificacao'])){
+						$classificacao = addslashes($_POST['classificacao']);
 
-						if(empty($conta) && empty($saldo) && empty($tipodeconta)){
-							echo "<script>alert('Preencha todos os dados');</script>";
-						}else{
-							if(empty($conta)){
-								echo "<script>alert('Preencha o nome da conta');</script>";
-							}else{
-								if(empty($saldo)){
-									echo "<script>alert('Preencha o saldo');</script>";
-								}else{
-									if(empty($tipodeconta)){
-										echo "<script>alert('Preencha o tipo da conta');</script>";
-									}
-								}
-							}
-						}
-
-						if(!empty($conta) && !empty($saldo) && !empty($tipodeconta)){
-										
-							$conn = new conexao;
+                        if(empty($classificacao)){
+                            echo "<script>alert('Preencha a classificação');</script>";
+                        }else{
+                            $conn = new conexao;
 							$conn->getConnection();
 
-								if ($usuario->conta_usuario($conta, $saldo, $tipodeconta)) {
-										echo "<script>alert('Conta cadastrada com sucesso!');</script>";
+								if ($usuario->classificacao($classificacao)) {
+										echo "<script>alert('Classificação cadastrada com sucesso!');</script>";
 								}
+                        }
+                    }
 
-						}
-
-					}
-
-
-					
-					
 					?>
 
 				</div>

@@ -25,26 +25,6 @@ class Usuario {
 
     }
 
-    // public function login($usuario, $senha){
-    //     global $conn;
-    //     //verificar se o usuario ja esta cadastrado, caso sim
-
-    //     $sql = $conn->prepare("SELECT id_usuario FROM usuarios
-    //     WHERE usuario = :usuario AND senha = :senha");
-    //     $sql->bindValue(":usuario", $usuario);
-    //     $sql->bindValue(":senha", md5($senha));
-    //     $sql->execute();
-    //     if($sql->rowCount() > 0){//entrando no sistema
-    //         $dados = $sql->fetch();//transforma os dados do banco em array com os nomes das colunas
-    //             // session_start();
-    //             // echo $_SESSION['id_usuario'] = $dados['id_usuario'];   
-    //             // header('location:home.php');       
-    //         return true; //usuario logado com sucesso
-    //     } else{
-    //         return false; //nao foi possivel logar
-    //     }
-        
-    // }
 
 
     public function conta_usuario($conta, $saldo, $tipodeconta){
@@ -74,6 +54,52 @@ class Usuario {
         echo "Saldo<br>";
         echo number_format($soma, 2, '.', '.');
         return true;
+
+    }
+
+    public function classificacao($classificacao){
+        global $conn;
+
+        $id_usuario = $_SESSION['id_usuario'];
+        $sql = $conn->prepare("INSERT INTO classificacao (id_usuario, classificacao) 
+        VALUES ($id_usuario, :classificacao)");
+      $sql->bindValue(":classificacao", $classificacao);
+      $sql->execute();
+      return true;
+
+    }
+
+    public function tipoclassificacao(){
+        global $conn;
+
+        $id_usuario = $_SESSION['id_usuario'];
+        $sql = $conn->prepare("SELECT classificacao FROM classificacao WHERE id_usuario = $id_usuario");
+      $sql->execute();
+      $classificacoes = $sql->fetchAll();   
+
+      $arrayclassificacao = array_column($classificacoes, 'classificacao');
+        
+      foreach($arrayclassificacao as $nomeclassificacao){
+            echo "<option>" .$nomeclassificacao."</option>";
+            echo "<br>";
+        }
+    }
+
+    public function tipoconta(){
+        global $conn;
+
+        $id_usuario = $_SESSION['id_usuario'];
+        $sql = $conn->prepare("SELECT conta FROM contas WHERE id_usuario = $id_usuario");
+      $sql->execute();
+      $contas = $sql->fetchAll();   
+
+      $arraycontas = array_column($contas, 'conta');
+        
+      foreach($arraycontas as $nomecontas){
+            echo "<option>" .$nomecontas."</option>";
+            echo "<br>";
+        }
+
 
     }
     

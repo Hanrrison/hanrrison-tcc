@@ -9,6 +9,8 @@ session_start();
 	require_once 'class/importaxml.php';
 	require_once 'class/despesas.php';
 	require_once 'class/receitas.php';
+	require_once 'class/usuario.php';
+	$usuario = new usuario;
 	$importaxml = new importaxml;
 	$despesa = new despesas;
 	$receita = new receitas;
@@ -37,7 +39,7 @@ session_start();
 	<!-- Conteúdo -->
 
 	<header class="header">
-		<img height="100%" id="logo" src="http://www.chicledigital.com.br/wp-content/uploads/criacao-de-logotipo.png">
+	<img height="100%" id="logo" src="../logotipo.png">
 		<div class="login">
 		<?php echo "Bem vindo, " . $_SESSION['usuario'];
 		
@@ -56,15 +58,15 @@ session_start();
 				<input type="radio" name="menu" id="edit">
 				<li>
 					<label for="edit" class="title">Cadastro</label>
-					<a href="#">Cadastro de Classificação</a>
+					<a href="classificacao.php">Cadastro de Classificação</a>
 					<a href="contas.php">Cadastro de Contas</a>
 				</li>
 				<input type="radio" name="menu" id="tools">
 				<li>
 					<label for="tools" class="title">Movimentação</label>
 					<a href="transacoes.php">Transações</a>
-					<a href="#">Receitas</a>
-					<a href="#">Despesas</a>
+					<a href="relatorioreceitas.php">Receitas</a>
+					<a href="relatoriodespesas.php">Despesas</a>
 				</li>
 			</ul>
 		</nav>
@@ -95,9 +97,19 @@ session_start();
 									<input type="text" name="nomereceita" placeholder="Nome">
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>
+										<?php
+											$conn = new conexao;
+											$conn->getConnection();
+											echo $usuario->tipoclassificacao();
+										?>
 										</select>
 									<select name="conta">
 										<option value="">Selecione a Conta</option>
+										<?php
+											$conn = new conexao;
+											$conn->getConnection();
+											echo $usuario->tipoconta();
+										?>
 										</select>
 
 										<div class="submitreceitas">
@@ -210,12 +222,18 @@ session_start();
 
 									<select name="classificacao">
 										<option value="">Selecione a Classificação</option>
+										<?php
+											$conn = new conexao;
+											$conn->getConnection();
+											echo $usuario->tipoclassificacao();
+										?>
 										</select>
 									<select name="conta">
 										<option value="">Selecione a Conta</option>
 										<?php
-										//mostrar as contas que o cliente tem cadastrado
-										//ex itau, carteira etc
+											$conn = new conexao;
+											$conn->getConnection();
+											echo $usuario->tipoconta();
 										?>
 										</select>
 										
