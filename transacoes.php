@@ -27,6 +27,7 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="../css/transacoes.css">
+	<script type="text/javascript" src="../js/main.js"></script>
 	
 
 
@@ -92,7 +93,7 @@ session_start();
 							<form method="POST">
 
 									
-									<input type="text" size="10" name="valorreceita" placeholder="R$: 0.00">
+									<input type="text" size="12" name="valorreceita" placeholder="Valor R$: 0.00">
 									<input type="text" size="10" name="datareceita" placeholder="DD/MM/YYYY" value="<?php echo date("d/m/Y");?>"><br>
 									<input type="text" name="nomereceita" placeholder="Nome">
 									<select name="classificacao">
@@ -214,7 +215,7 @@ session_start();
 										<input type="submit" id="submit-arquivo" name="confirmaxml" value="Confirmar Importação"><br>		
 										
 									
-									<input type="text" size="10" name="valordespesa" placeholder="R$: 0.00" value="<?php echo $valordanfe;?>">
+									<input type="text" size="12" name="valordespesa" placeholder="Valor R$: 0.00" value="<?php echo $valordanfe;?>">
 									<input type="text" size="10" name="datadespesa" placeholder="DD/MM/YYYY" value="<?php echo $date->format('d/m/Y');?>"><br>
 
 									<input type="text" name="nomedespesa" placeholder="Nome">

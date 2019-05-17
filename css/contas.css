@@ -201,7 +201,7 @@ input[type="radio"] {
 }
 
 .btncontas{
-    width: 150px;
+    width: -webkit-fill-available;
     height: 50px;
     background-color: rgb(0, 119, 255);
     border-radius: 5px;
@@ -226,7 +226,11 @@ input[type="radio"] {
     margin-left: 30px;
 }
 
-
+fieldset{
+    border: 2px solid rgb(0, 119, 255);
+    border-radius: 5px;
+    width: 50%;
+}
 
 
 

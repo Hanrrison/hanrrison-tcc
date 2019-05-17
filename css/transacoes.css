@@ -279,6 +279,7 @@ input[type="radio"] {
 .rodape{
     margin: 5px;
     padding: 5px;
+    margin-left: 150px;
     text-align: center;
     /*background: rgb(244, 248, 7);*/
 }
