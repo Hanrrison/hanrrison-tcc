@@ -31,7 +31,6 @@ $conn = new conexao;
         <input type ="submit" class="login" value="Entrar">
 
         <div class="links">
-             <a href="#">Esqueceu a senha?</a><br>
              <a href="cadastro.php">Não tem uma conta? Cadastre-se</a>
         </div>
         
